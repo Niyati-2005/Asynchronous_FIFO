@@ -1,0 +1,22 @@
++----+----------------------------+----------------------+-----------------------------------------------+
+| #  | Warning ID / Issue        | Status               | Justification                                  |
++----+----------------------------+----------------------+-----------------------------------------------+
+| 1  | CDC Gray-pointer warning  | WAIVED               | Intentional async FIFO CDC structure using     |
+|    |                            |                      | Gray-coded pointers and synchronizers.         |
+| 2  | IFP-0028                  | WAIVED               | Core coordinate snapped to legal placement     |
+|    | Core area snapped         |                      | grid; no functional/timing impact.             |
+| 3  | CTS-0132                  | WAIVED / CLEANUP     | Obsolete -balance_levels option; no design      |
+|    | -balance_levels obsolete  |                      | impact. Remove from script.                    |
+| 4  | LEFPARS-2008              | WAIVED               | Obsolete NOWIREEXTENSIONATPIN statement in     |
+|    |                            |                      | technology LEF; ignored by parser.             |
+| 5  | DRT-0349                  | WAIVED WITH CHECK    | Unsupported LEF58_ENCLOSURE/CUTCLASS rule.     |
+|    | LEF58_ENCLOSURE           |                      | Final DRC must be verified.                    |
+| 6  | GRT-0246                  | WAIVED WITH CHECK    | No recognized antenna diode in loaded library.  |
+|    | No ANTENNACELL            |                      | Separate antenna analysis required.            |
+| 7  | FLW-0010                  | WAIVED               | Design intentionally has two asynchronous clock |
+|    | Multiple clocks           |                      | domains: wclk and rclk.                        |
+| 8  | RCX-0114                  | WAIVED WITH CHECK    | CTS-generated internal clock-tree nets may not  |
+|    | clknet_*_rclk             |                      | start from iterm/bterm; verify post-route STA. |
+| 9  | RCX-0114                  | UNDER REVIEW         | Generic nets (net2, net9, net14, etc.) require  |
+|    | Generic nets               |                      | confirmation of RC extraction/connectivity.    |
++----+----------------------------+----------------------+-----------------------------------------------+

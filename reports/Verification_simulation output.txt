@@ -1,0 +1,217 @@
+Attempting to open FST file: outputs/tb_async_fifo_sim.fst
+
+================================================
+TEST 1 : RESET
+================================================
+
+================================================
+RESET COMPLETE
+================================================
+[PASS] FIFO is EMPTY after reset
+[PASS] FIFO is NOT FULL after reset
+
+================================================
+TEST 2 : BASIC WRITE / READ
+================================================
+[WRITE] time=165 data=0xaaaa0001 expected_depth=1
+[WRITE] time=185 data=0xaaaa0002 expected_depth=2
+[WRITE] time=205 data=0xaaaa0003 expected_depth=3
+[WRITE] time=225 data=0xaaaa0004 expected_depth=4
+[READ PASS] time=316 expected=0xaaaa0001 actual=0xaaaa0001 remaining=3
+[READ PASS] time=344 expected=0xaaaa0002 actual=0xaaaa0002 remaining=2
+[READ PASS] time=372 expected=0xaaaa0003 actual=0xaaaa0003 remaining=1
+[READ PASS] time=400 expected=0xaaaa0004 actual=0xaaaa0004 remaining=0
+[PASS] FIFO became EMPTY after all reads
+
+================================================
+TEST 3 : FIFO ORDERING
+================================================
+[WRITE] time=475 data=0x11111111 expected_depth=1
+[WRITE] time=495 data=0x22222222 expected_depth=2
+[WRITE] time=515 data=0x33333333 expected_depth=3
+[WRITE] time=535 data=0x44444444 expected_depth=4
+[WRITE] time=555 data=0x55555555 expected_depth=5
+[READ PASS] time=652 expected=0x11111111 actual=0x11111111 remaining=4
+[READ PASS] time=680 expected=0x22222222 actual=0x22222222 remaining=3
+[READ PASS] time=708 expected=0x33333333 actual=0x33333333 remaining=2
+[READ PASS] time=736 expected=0x44444444 actual=0x44444444 remaining=1
+[READ PASS] time=764 expected=0x55555555 actual=0x55555555 remaining=0
+[PASS] FIFO ordering verified using reference queue
+
+================================================
+TEST 4 : FULL CONDITION
+================================================
+[WRITE] time=775 data=0xf0000000 expected_depth=1
+[WRITE] time=795 data=0xf0000001 expected_depth=2
+[WRITE] time=815 data=0xf0000002 expected_depth=3
+[WRITE] time=835 data=0xf0000003 expected_depth=4
+[WRITE] time=855 data=0xf0000004 expected_depth=5
+[WRITE] time=875 data=0xf0000005 expected_depth=6
+[WRITE] time=895 data=0xf0000006 expected_depth=7
+[WRITE] time=915 data=0xf0000007 expected_depth=8
+[WRITE] time=935 data=0xf0000008 expected_depth=9
+[WRITE] time=955 data=0xf0000009 expected_depth=10
+[WRITE] time=975 data=0xf000000a expected_depth=11
+[WRITE] time=995 data=0xf000000b expected_depth=12
+[WRITE] time=1015 data=0xf000000c expected_depth=13
+[WRITE] time=1035 data=0xf000000d expected_depth=14
+[WRITE] time=1055 data=0xf000000e expected_depth=15
+[WRITE] time=1075 data=0xf000000f expected_depth=16
+[PASS] FIFO reached FULL after 16 writes
+
+================================================
+TEST 5 : EMPTY CONDITION
+================================================
+[READ PASS] time=1128 expected=0xf0000000 actual=0xf0000000 remaining=15
+[READ PASS] time=1156 expected=0xf0000001 actual=0xf0000001 remaining=14
+[READ PASS] time=1184 expected=0xf0000002 actual=0xf0000002 remaining=13
+[READ PASS] time=1212 expected=0xf0000003 actual=0xf0000003 remaining=12
+[READ PASS] time=1240 expected=0xf0000004 actual=0xf0000004 remaining=11
+[READ PASS] time=1268 expected=0xf0000005 actual=0xf0000005 remaining=10
+[READ PASS] time=1296 expected=0xf0000006 actual=0xf0000006 remaining=9
+[READ PASS] time=1324 expected=0xf0000007 actual=0xf0000007 remaining=8
+[READ PASS] time=1352 expected=0xf0000008 actual=0xf0000008 remaining=7
+[READ PASS] time=1380 expected=0xf0000009 actual=0xf0000009 remaining=6
+[READ PASS] time=1408 expected=0xf000000a actual=0xf000000a remaining=5
+[READ PASS] time=1436 expected=0xf000000b actual=0xf000000b remaining=4
+[READ PASS] time=1464 expected=0xf000000c actual=0xf000000c remaining=3
+[READ PASS] time=1492 expected=0xf000000d actual=0xf000000d remaining=2
+[READ PASS] time=1520 expected=0xf000000e actual=0xf000000e remaining=1
+[READ PASS] time=1548 expected=0xf000000f actual=0xf000000f remaining=0
+[PASS] FIFO reached EMPTY
+
+================================================
+TEST 6 : RANDOM TRAFFIC
+================================================
+
+================================================
+RESET COMPLETE
+================================================
+[WRITE] time=1775 data=0x24800459 expected_depth=1
+[READ PASS] time=1842 expected=0x24800459 actual=0x24800459 remaining=0
+[WRITE] time=1855 data=0x244113f3 expected_depth=1
+[WRITE] time=1875 data=0x8b3a9df4 expected_depth=2
+[WRITE] time=1895 data=0x98483aff expected_depth=3
+[READ PASS] time=1926 expected=0x244113f3 actual=0x244113f3 remaining=2
+[READ PASS] time=1954 expected=0x8b3a9df4 actual=0x8b3a9df4 remaining=1
+[READ PASS] time=1982 expected=0x98483aff actual=0x98483aff remaining=0
+[WRITE] time=1995 data=0x8e7524c0 expected_depth=1
+[READ PASS] time=2066 expected=0x8e7524c0 actual=0x8e7524c0 remaining=0
+[WRITE] time=2085 data=0x66ddcabc expected_depth=1
+[READ PASS] time=2150 expected=0x66ddcabc actual=0x66ddcabc remaining=0
+[WRITE] time=2165 data=0x181b85ca expected_depth=1
+[WRITE] time=2185 data=0x5e591a88 expected_depth=2
+[READ PASS] time=2234 expected=0x181b85ca actual=0x181b85ca remaining=1
+[WRITE] time=2245 data=0x835b1b9d expected_depth=2
+[READ PASS] time=2262 expected=0x5e591a88 actual=0x5e591a88 remaining=1
+[WRITE] time=2275 data=0x5d125294 expected_depth=2
+[WRITE] time=2295 data=0x16f4285f expected_depth=3
+[WRITE] time=2315 data=0xa87007dd expected_depth=4
+[WRITE] time=2335 data=0x8e00a869 expected_depth=5
+[WRITE] time=2355 data=0xedf2cbfb expected_depth=6
+[READ PASS] time=2374 expected=0x835b1b9d actual=0x835b1b9d remaining=5
+[WRITE] time=2385 data=0xc4bad623 expected_depth=6
+[WRITE] time=2405 data=0x6be1b26e expected_depth=7
+[WRITE] time=2425 data=0x1a757f2c expected_depth=8
+[READ PASS] time=2444 expected=0x5d125294 actual=0x5d125294 remaining=7
+[WRITE] time=2455 data=0x69444b1c expected_depth=8
+[WRITE] time=2475 data=0x89ff5833 expected_depth=9
+[WRITE] time=2495 data=0x6249f0ea expected_depth=10
+[WRITE] time=2515 data=0x85addf9f expected_depth=11
+[WRITE] time=2535 data=0xa3fd9fcb expected_depth=12
+[WRITE] time=2555 data=0x306c2019 expected_depth=13
+[WRITE] time=2575 data=0x91bb5b08 expected_depth=14
+[READ PASS] time=2598 expected=0x16f4285f actual=0x16f4285f remaining=13
+[READ PASS] time=2626 expected=0xa87007dd actual=0xa87007dd remaining=12
+[READ PASS] time=2654 expected=0x8e00a869 actual=0x8e00a869 remaining=11
+[READ PASS] time=2682 expected=0xedf2cbfb actual=0xedf2cbfb remaining=10
+[WRITE] time=2695 data=0x633b5f2c expected_depth=11
+[WRITE] time=2715 data=0x9be398ef expected_depth=12
+[WRITE] time=2735 data=0x47225f70 expected_depth=13
+[READ PASS] time=2752 expected=0xc4bad623 actual=0xc4bad623 remaining=12
+[READ PASS] time=2780 expected=0x6be1b26e actual=0x6be1b26e remaining=11
+[READ PASS] time=2808 expected=0x1a757f2c actual=0x1a757f2c remaining=10
+[READ PASS] time=2836 expected=0x69444b1c actual=0x69444b1c remaining=9
+[READ PASS] time=2864 expected=0x89ff5833 actual=0x89ff5833 remaining=8
+[WRITE] time=2875 data=0xf8334cdb expected_depth=9
+[READ PASS] time=2892 expected=0x6249f0ea actual=0x6249f0ea remaining=8
+[WRITE] time=2905 data=0x5f36e7d4 expected_depth=9
+[READ PASS] time=2934 expected=0x85addf9f actual=0x85addf9f remaining=8
+[READ PASS] time=2962 expected=0xa3fd9fcb actual=0xa3fd9fcb remaining=7
+[READ PASS] time=2990 expected=0x306c2019 actual=0x306c2019 remaining=6
+[READ PASS] time=3018 expected=0x91bb5b08 actual=0x91bb5b08 remaining=5
+[WRITE] time=3035 data=0xcbdfa40f expected_depth=6
+[WRITE] time=3055 data=0xfbd42328 expected_depth=7
+[READ PASS] time=3074 expected=0x633b5f2c actual=0x633b5f2c remaining=6
+[WRITE] time=3085 data=0xe7c3ffd5 expected_depth=7
+[READ PASS] time=3102 expected=0x9be398ef actual=0x9be398ef remaining=6
+[READ PASS] time=3130 expected=0x47225f70 actual=0x47225f70 remaining=5
+[WRITE] time=3145 data=0xe8ae1949 expected_depth=6
+[READ PASS] time=3172 expected=0xf8334cdb actual=0xf8334cdb remaining=5
+[READ PASS] time=3200 expected=0x5f36e7d4 actual=0x5f36e7d4 remaining=4
+[READ PASS] time=3228 expected=0xcbdfa40f actual=0xcbdfa40f remaining=3
+[WRITE] time=3245 data=0x0fbb31d4 expected_depth=4
+[WRITE] time=3265 data=0x2766e59e expected_depth=5
+[WRITE] time=3285 data=0xa0ca7538 expected_depth=6
+[READ PASS] time=3312 expected=0xfbd42328 actual=0xfbd42328 remaining=5
+[WRITE] time=3325 data=0x14f72c10 expected_depth=6
+[READ PASS] time=3354 expected=0xe7c3ffd5 actual=0xe7c3ffd5 remaining=5
+[READ PASS] time=3382 expected=0xe8ae1949 actual=0xe8ae1949 remaining=4
+[READ PASS] time=3410 expected=0x0fbb31d4 actual=0x0fbb31d4 remaining=3
+[WRITE] time=3425 data=0x4e526fdc expected_depth=4
+[READ PASS] time=3452 expected=0x2766e59e actual=0x2766e59e remaining=3
+[WRITE] time=3465 data=0xce73ef44 expected_depth=4
+[READ PASS] time=3494 expected=0xa0ca7538 actual=0xa0ca7538 remaining=3
+[READ PASS] time=3522 expected=0x14f72c10 actual=0x14f72c10 remaining=2
+[WRITE] time=3535 data=0x81e78f54 expected_depth=3
+[READ PASS] time=3564 expected=0x4e526fdc actual=0x4e526fdc remaining=2
+[READ PASS] time=3592 expected=0xce73ef44 actual=0xce73ef44 remaining=1
+[WRITE] time=3605 data=0x46c709a7 expected_depth=2
+[WRITE] time=3625 data=0xadf33513 expected_depth=3
+[READ PASS] time=3648 expected=0x81e78f54 actual=0x81e78f54 remaining=2
+[WRITE] time=3665 data=0x5e4321aa expected_depth=3
+[READ PASS] time=3690 expected=0x46c709a7 actual=0x46c709a7 remaining=2
+[READ PASS] time=3718 expected=0xadf33513 actual=0xadf33513 remaining=1
+[READ PASS] time=3746 expected=0x5e4321aa actual=0x5e4321aa remaining=0
+[WRITE] time=3765 data=0x64bd4fe5 expected_depth=1
+[READ PASS] time=3830 expected=0x64bd4fe5 actual=0x64bd4fe5 remaining=0
+[WRITE] time=3845 data=0xa52a8938 expected_depth=1
+[READ PASS] time=3914 expected=0xa52a8938 actual=0xa52a8938 remaining=0
+[WRITE] time=3925 data=0xaf5f700f expected_depth=1
+[READ PASS] time=3984 expected=0xaf5f700f actual=0xaf5f700f remaining=0
+[WRITE] time=3995 data=0xae6a670d expected_depth=1
+[READ PASS] time=4054 expected=0xae6a670d actual=0xae6a670d remaining=0
+[WRITE] time=4065 data=0x37b8631a expected_depth=1
+[WRITE] time=4085 data=0xe19643c3 expected_depth=2
+[WRITE] time=4105 data=0x7a3ac54e expected_depth=3
+[READ PASS] time=4124 expected=0x37b8631a actual=0x37b8631a remaining=2
+[WRITE] time=4135 data=0x13034287 expected_depth=3
+[READ PASS] time=4152 expected=0xe19643c3 actual=0xe19643c3 remaining=2
+[READ PASS] time=4180 expected=0x7a3ac54e actual=0x7a3ac54e remaining=1
+[READ PASS] time=4208 expected=0x13034287 actual=0x13034287 remaining=0
+[PASS] Random traffic completed successfully
+
+
+================================================
+          ASYNCHRONOUS FIFO REPORT
+================================================
+FIFO DEPTH       : 16
+DATA WIDTH       : 32 bits
+TOTAL WRITES     : 76
+TOTAL READS      : 76
+WRITE ERRORS     : 0
+READ ERRORS      : 0
+REFERENCE QUEUE  : 0 entries
+TEST ERRORS      : 0
+
+WRITE COVERAGE   : 87.50%
+READ COVERAGE    : 87.50%
+
+===============================================
+             *** TEST PASSED ***
+===============================================
+- /home/c2s-jaip-251-niyati/catalyzer_projects/digital/Asynchronous_FIFO/inputs/testbench/tb_async_fifo.sv:847: Verilog $finish
+[COV] coverage database: outputs/tb_async_fifo_coverage.dat
+[COV] coverage report  : logs/coverage.log
+Dumped waveform to: outputs/tb_async_fifo_sim.fst
+
