@@ -2,7 +2,8 @@
 
 An end-to-end implementation of an **Asynchronous FIFO**, covering RTL design, functional verification, CDC analysis, synthesis, static timing analysis, and physical design through **GDSII generation**.
 
-This project started as a personal RTL design exercise to strengthen my understanding of **clock-domain crossing, FIFO architecture, SystemVerilog, and digital design implementation**. I extended it beyond RTL by taking the design through an open-source RTL-to-GDSII flow.
+This project started as a personal RTL design exercise to strengthen my understanding of **clock-domain crossing, FIFO architecture, SystemVerilog, and digital design implementation**. I extended it beyond RTL by taking the design through an open-source RTL-to-GDSII flow. Special mention to compcarta for making this flow this easier.........smh
+
 
 ## Why Asynchronous FIFO?
 
